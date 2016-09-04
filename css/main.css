@@ -54,3 +54,22 @@ html, body {
 	cursor:pointer;
 	color:#fff;
 }
+
+#projectlist {
+	width: 960px;
+	list-style: none;
+}
+
+#projectlist > li {
+	font-weight: 600;
+	padding: 20px;
+ 	border-left: solid;
+	border-right: solid;
+	border-top: solid;
+	border-width: thin;
+}
+
+#projectlist > li:last-child  {
+	border-bottom: solid;
+	border-width: thin;
+}
