@@ -15,21 +15,11 @@ var githubRepos = (function($, w, undefined) {
     };
 }(jQuery, window));
 
-var markdownHandler = (function($, w, undefined) {
+var modalFiller = (function($, w, undefined) {
 
-    var folder = "md/";
-
-    var md = new w.markdownit();
 
     var _fileExists = function(name) {
-        w.console.log(folder + name + ".md");
-        $.ajax(folder + name + ".md", {
-
-           error: function (response) {
-               w.console.log("404");
-               w.console.log(name);
-               _get404(name);
-           },
+        $.ajax("ajax/modals/" + name, {
            success: function (data) {
                w.console.log("200");
                _addTextToModal(name, data);
@@ -37,18 +27,14 @@ var markdownHandler = (function($, w, undefined) {
         });
     };
 
-    var _addTextToModal = function(name, markdown) {
+    var _addTextToModal = function(name, data) {
          w.console.log(name);
-         var html = md.render(markdown);
+         var html = data;
          $("#modal-" + name + "-content").html(html);
     };
 
-    var _get404 = function(name) {
-        _addTextToModal(name, "# Sorry \n ## FUCK!");
-    };
-
     return {
-        getModalContent: function(name) {
+        getContent: function(name) {
             w.console.log("fuck");
             _fileExists(name);
         }
@@ -83,24 +69,28 @@ $( document ).ready(function() {
 	githubRepos.run(function(data) {
 		var modalhtml = "";
 		var projectCount = 0;
+        var projectlist = [];
 		for (var i = 0; i < data.length; i++) {
 			if (!data[i].fork) {
+                projectlist.push(data[i].name);
                 //god awful string of doom
 				modalhtml = modalhtml + '<li><a id="demo' + i + '" href="#repo' + i + 'Modal">' + data[i].name + '</a><div id="repo' + i + 'Modal"><div class="close-repo' + i + 'Modal modalclose"><img src="img/close.png"/></div><div id="modal-' + data[i].name + '-content">' + data[i].git_url + '</div></div></li>';
 			}
-			projectCount = i;
+			projectCount += 1;
 		}
 		$("#projectlist").html(modalhtml);
         //add modalsa
-		for (var i = 0; i <= projectCount; i++) {
+		for (var i = 0; i < projectCount; i++) {
 			$("#demo" + i).animatedModal({
                 modalTarget:'repo' + i + "Modal",
                 animatedIn:'fadeInLeft',
                 animatedOut:'fadeOutRight',
                 color:'#eeeeee',
+                LeProjectName: projectlist[i],
                 beforeOpen: function() {
                     //fuck
-                    markdownHandler.getModalContent("Geekbot");
+                    console.log(this.LeProjectName);
+                    modalFiller.getContent(this.LeProjectName);
                 },
                 afterClose: function() {
                     setScrollyThingy();

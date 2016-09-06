@@ -1,0 +1,7 @@
+{
+  "prefer-stable" : true,
+  "require": {
+    "erusev/parsedown": "^v1.6.0",
+    "mikecao/flight": "^1.2"
+  }
+}
