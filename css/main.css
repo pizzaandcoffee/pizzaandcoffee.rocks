@@ -77,3 +77,8 @@ html, body {
 	text-decoration: none;
 	text-transform: uppercase;
 }
+
+.modalclose > img {
+		width: 100px;
+		height: auto;
+}
