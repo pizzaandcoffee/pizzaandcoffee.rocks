@@ -1,7 +1,7 @@
 @import 'https://fonts.googleapis.com/css?family=Lato|Pacifico';
 
 html, body {
-	background-color: #fff;
+	background-color: #f1f1f1;
 	color: #636b6f;
     font-family: 'Lato', cursive;
 	font-weight: 100;
@@ -34,7 +34,7 @@ html, body {
 .links > a {
 	color: #636b6f;
 	padding: 0 25px;
-	font-size: 12px;
+	font-size: 16px;
 	font-weight: 600;
 	letter-spacing: .1rem;
 	text-decoration: none;
@@ -58,27 +58,23 @@ html, body {
 }
 
 #projectlist > li {
-	font-weight: 600;
+	font-weight: 500;
 	padding: 20px;
- 	border-left: solid;
-	border-right: solid;
-	border-top: solid;
-	border-width: thin;
+
 }
 
 #projectlist > li:last-child  {
-	border-bottom: solid;
-	border-width: thin;
+
 }
 
 .subtext {
 	color: #636b6f;
 	padding: 0 25px;
-	font-size: 12px;
-	font-weight: 600;
+	font-size: 16px;
+	font-size: 16px;
+	font-weight: 500;
 	letter-spacing: .1rem;
 	text-decoration: none;
-	text-transform: uppercase;
 }
 
 .modalclose > img {
