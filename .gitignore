@@ -1,3 +1,5 @@
 /composer.lock
 /vendor
 .htaccess
+/node_modules/
+/.idea

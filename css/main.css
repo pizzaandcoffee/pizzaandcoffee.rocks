@@ -1,7 +1,9 @@
+@import 'https://fonts.googleapis.com/css?family=Lato|Pacifico';
+
 html, body {
 	background-color: #fff;
 	color: #636b6f;
-	font-family: 'Raleway', sans-serif;
+    font-family: 'Lato', cursive;
 	font-weight: 100;
 	height: 100vh;
 	margin: 0;
@@ -27,6 +29,7 @@ html, body {
 }
 .title {
 	font-size: 84px;
+    font-family: 'Pacifico', cursive;
 }
 .links > a {
 	color: #636b6f;
@@ -82,3 +85,21 @@ html, body {
 		width: 100px;
 		height: auto;
 }
+
+.canvas-interactive-wrapper {
+	position: relative;
+	height: 100vh;
+	text-align: center;
+}
+
+.canvas-interactive-wrapper canvas {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
