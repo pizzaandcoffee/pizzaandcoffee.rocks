@@ -53,14 +53,13 @@ html, body {
 }
 
 #projectlist {
-	width: 960px;
 	list-style: none;
 }
 
 #projectlist > li {
 	font-weight: 500;
 	padding: 20px;
-
+	list-style-type: none;
 }
 
 #projectlist > li:last-child  {
