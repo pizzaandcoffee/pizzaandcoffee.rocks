@@ -132,7 +132,3 @@ html, body {
 .modal-content > ul {
     list-style: none;
 }
-
-.modal-content > hr{
-   border-color: #636b6f;
-}
