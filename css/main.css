@@ -1,5 +1,7 @@
 @import 'https://fonts.googleapis.com/css?family=Lato|Pacifico';
-
+//------------------------------------------------------------------------------
+// Stuff
+//------------------------------------------------------------------------------
 html, body {
 	background-color: #f1f1f1;
 	color: #636b6f;
@@ -36,6 +38,7 @@ html, body {
 .title {
 	font-size: 84px;
     font-family: 'Pacifico', cursive;
+	color: #636b6f;
 }
 
 .links > a {
@@ -82,11 +85,10 @@ html, body {
 	text-decoration: none;
 }
 
-.modalclose > img {
-		width: 100px;
-		height: auto;
-}
 
+//------------------------------------------------------------------------------
+// Canvas
+//------------------------------------------------------------------------------
 .canvas-interactive-wrapper {
 	position: relative;
 	height: 100vh;
@@ -104,8 +106,33 @@ html, body {
 	left: 0;
 }
 
+//------------------------------------------------------------------------------
+// Modals
+//------------------------------------------------------------------------------
+.modalclose > img {
+	width: 100px;
+	height: auto;
+}
+
 .modal-content{
 	text-align: left;
 	max-width: 40em;
 	display: inline-block;
+	padding: 2em;
+	color: #636b6f;
+}
+
+.modal-content > a,
+.modal-content > p > a,
+.modal-content > ul > li > a {
+	color: #4078c0;
+	text-decoration: none;
+}
+
+.modal-content > ul {
+    list-style: none;
+}
+
+.modal-content > hr{
+   border-color: #636b6f;
 }
