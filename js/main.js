@@ -102,7 +102,8 @@ $( document ).ready(function() {
 			}
 			projectCount += 1;
 		}
-		$("#projectlist").html(modalhtml);
+		$("#loading").remove();
+        $("#projectlist").html(modalhtml);
 		for (var i = 0; i < projectCount; i++) {
 			$("#demo" + i).animatedModal({
                 modalTarget:'repo' + i + "Modal",
