@@ -3,3 +3,4 @@
 .htaccess
 /node_modules/
 /.idea
+/js/bower

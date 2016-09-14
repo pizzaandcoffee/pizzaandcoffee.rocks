@@ -1,0 +1,10 @@
+{
+  "name": "pizzaandcoffee",
+  "private": true,
+  "dependencies": {
+    "animatedmodal": "joaopereirawd/animatedModal.js",
+    "cheet.js": "^0.3.3",
+    "granim.js": "sarcadass/granim.js#^1.0.31",
+    "jquery": "^3.1.0"
+  }
+}
