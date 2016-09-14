@@ -98,7 +98,7 @@ $( document ).ready(function() {
 			if (!data[i].fork) {
                 projectlist.push(data[i].name);
                 //god awful string of doom
-				modalhtml = modalhtml + '<li class="links"><a id="demo' + i + '" href="#repo' + i + 'Modal">' + data[i].name + '</a><div id="repo' + i + 'Modal"><div class="close-repo' + i + 'Modal modalclose"><img style="float: right;" src="img/close.png"/></div><div id="modal-' + data[i].name + '-content" class="modal-content">' + data[i].git_url + '</div></div></li>';
+				modalhtml = modalhtml + '<li class="links"><a id="demo' + i + '" href="#repo' + i + 'Modal">' + data[i].name +'</a><span class="language ' + data[i].language + '">' + data[i].language + '</span><div id="repo' + i + 'Modal"><div class="close-repo' + i + 'Modal modalclose"><img style="float: right;" src="img/close.png"/></div><div id="modal-' + data[i].name + '-content" class="modal-content">' + data[i].git_url + '</div></div></li>';
 			}
 			projectCount += 1;
 		}
