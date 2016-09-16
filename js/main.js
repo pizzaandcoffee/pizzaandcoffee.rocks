@@ -71,23 +71,30 @@ var modalFiller = (function($, w, undefined) {
 //------------------------------------------------------------------------------
 //adds a ScrollyThingy to the links of the navbar
 function setScrollyThingy() {
-    $(document).on('click', 'a[href^="#"]', function(e) {
-    	var id = $(this).attr('href');
-    	var $id = $(id);
-    	if ($id.length === 0) {
-    		return;
-    	}
-    	e.preventDefault();
-    	var pos = $(id).offset().top;
-    	$('body, html').animate({scrollTop: pos});
+    $(".link").on('click', function(event) {
+        if (this.hash !== "") {
+          event.preventDefault();
+
+          var hash = this.hash;
+
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800, function(){
+            window.location.hash = hash;
+          });
+        }
     });
 }
+
+
+
+
 
 //------------------------------------------------------------------------------
 // Script
 //------------------------------------------------------------------------------
 $( document ).ready(function() {
-    setScrollyThingy();
+    //setScrollyThingy();
 
     //generate the Project list and add Modals
 	githubRepos.run(function(data) {
@@ -112,11 +119,10 @@ $( document ).ready(function() {
                 color:'#eeeeee',
                 LeProjectName: projectlist[i],
                 beforeOpen: function() {
-                    //fuck
-                    console.log(this.LeProjectName);
                     modalFiller.getContent(this.LeProjectName);
                 },
                 afterClose: function() {
+                    $('.link').unbind()
                     setScrollyThingy();
                 }
             });
