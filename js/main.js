@@ -94,7 +94,7 @@ function setScrollyThingy() {
 // Script
 //------------------------------------------------------------------------------
 $( document ).ready(function() {
-    //setScrollyThingy();
+    setScrollyThingy();
 
     //generate the Project list and add Modals
 	githubRepos.run(function(data) {
@@ -122,7 +122,9 @@ $( document ).ready(function() {
                     modalFiller.getContent(this.LeProjectName);
                 },
                 afterClose: function() {
-                    $('.link').unbind()
+                    $('.link').unbind();
+                    $('body').removeAttr("style");
+                    $('html').removeAttr("style");
                     setScrollyThingy();
                 }
             });
