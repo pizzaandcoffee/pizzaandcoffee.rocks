@@ -1,7 +1,6 @@
 //------------------------------------------------------------------------------
 // Gradient background
 //------------------------------------------------------------------------------
-
 var granimInstance = new Granim({
     element: '#canvas-interactive',
     name: 'interactive-gradient',
@@ -39,30 +38,38 @@ var githubRepos = (function($, w, undefined) {
     };
 }(jQuery, window));
 
-var modalFiller = (function($, w, undefined) {
+var modalFactory = (function($, w, undefined) {
 
-
-    var _fileExists = function(name) {
-        $.ajax("ajax/modals/" + name, {
+    var _getfile = function(modal) {
+        $.ajax("ajax/modals/" + modal.name, {
            success: function (data) {
-               w.console.log("200");
-               _addTextToModal(name, data);
+               modal.content = "<p id='modal-" + modal.name  + "-close'>close</p>" + data;
+               modal.create();
+               modal.open();
            }
         });
     };
 
     var _addTextToModal = function(name, data) {
-         w.console.log(name);
-         var html = data;
-         $("#modal-" + name + "-content").html(html);
+	    var close = "<p id='modal-" + name  + "-close'>close</p>";
+        $("#modal-" + name + "> .modal-content").html(close + data);
     };
 
     return {
-        getContent: function(name) {
-            w.console.log("fuck");
-            _fileExists(name);
+        createModal: function(projectName) {
+            _getfile(new betterAnimatedModals.modal({
+                name: projectName,
+                animatedIn: "fadeInLeft",
+                animatedOut: "fadeOutRight",
+                beforeOpen: function(modal){
+                    w.console.log("bla");
+                    $("#modal-" + modal.name + "-close").click(function(){
+                        modal.close();
+                    });
+                }
+            }));
         }
-    };
+   };
 }(jQuery, window));
 
 
@@ -89,7 +96,6 @@ function setScrollyThingy() {
 
 
 
-
 //------------------------------------------------------------------------------
 // Script
 //------------------------------------------------------------------------------
@@ -105,29 +111,15 @@ $( document ).ready(function() {
 			if (!data[i].fork) {
                 projectlist.push(data[i].name);
                 //god awful string of doom
-				modalhtml = modalhtml + '<li class="links"><a id="demo' + i + '" href="#repo' + i + 'Modal">' + data[i].name +'</a><span class="language ' + data[i].language + '">' + data[i].language + '</span><div id="repo' + i + 'Modal"><div class="close-repo' + i + 'Modal modalclose"><img style="float: right;" src="img/close.png"/></div><div id="modal-' + data[i].name + '-content" class="modal-content">' + data[i].git_url + '</div></div></li>';
+				modalhtml = modalhtml + '<li class="links"><a class="projectlink">' + data[i].name +'</a><span class="language ' + data[i].language + '">' + data[i].language + '</span></li>';
 			}
 			projectCount += 1;
 		}
 		$("#loading").remove();
         $("#projectlist").html(modalhtml);
-		for (var i = 0; i < projectCount; i++) {
-			$("#demo" + i).animatedModal({
-                modalTarget:'repo' + i + "Modal",
-                animatedIn:'fadeInLeft',
-                animatedOut:'fadeOutRight',
-                color:'#eeeeee',
-                LeProjectName: projectlist[i],
-                beforeOpen: function() {
-                    modalFiller.getContent(this.LeProjectName);
-                },
-                afterClose: function() {
-                    $('.link').unbind();
-                    $('body').removeAttr("style");
-                    $('html').removeAttr("style");
-                    setScrollyThingy();
-                }
-            });
-		}
+		$(".projectlink").click(function() {
+            modalFactory.createModal($(this).html());
+
+		});
 	})
 });
