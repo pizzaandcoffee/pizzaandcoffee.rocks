@@ -1,20 +1,19 @@
 <template lang="pug">
   div
-    <!--a(v-bind:href='item.html_url', target='_blank') {{ item.name }}-->
     span(v-if="!infoShown" v-on:click="showinfo" ) {{ item.name }}
-     div(v-if="infoShown")
-       button(v-on:click="showinfo") Hide
-       div(v-html="readme")
-    <!--div(v-bind:class="{'is-active': showinfo, modal: true}")-->
-      <!--.modal-background-->
-      <!--.modal-content(v-html="readme")-->
-      <!--button.modal-close(v-on:click="showinfo")-->
-
+    div(v-if="infoShown")
+      button(v-on:click="showinfo") Hide
+      div(v-html="readme")
+    modal(v-bind:name="item.name" v-bind:width="vw" v-bind:height="vh")
+      .readme-modal
+        span.close(v-on:click="hideinfo") X
+        div.readme(v-html="readme")
 </template>
 
 <script>
   import marked from 'marked'
   import Axios from 'axios'
+  import toPx from 'unit-to-px'
 
   export default {
     name: 'ProjectItem',
@@ -34,9 +33,23 @@
       }
     },
 
+    computed: {
+      vw () {
+        return (toPx('vw') * 60)
+      },
+
+      vh () {
+        return (toPx('vh') * 75)
+      }
+    },
+
     methods: {
       showinfo () {
-        this.infoShown = !this.infoShown
+        this.$modal.show(this.item.name)
+      },
+
+      hideinfo () {
+        this.$modal.hide(this.item.name)
       },
 
       fetchReadmeData () {

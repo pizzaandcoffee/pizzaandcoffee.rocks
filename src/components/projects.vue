@@ -11,7 +11,6 @@
 <script>
   import Axios from 'axios'
   import projectItem from './projectItem.vue'
-
   export default {
     name: 'Projects',
 

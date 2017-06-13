@@ -81,7 +81,6 @@ a {
     border-bottom: 0.1em solid #636b6f;
   }
 }
-
 .language {
   font-size: 12px;
   font-weight: 600;
@@ -90,7 +89,6 @@ a {
 .subtext {
   color: #636b6f;
   padding: 0 25px;
-  font-size: 16px;
   font-size: 16px;
   font-weight: 500;
   letter-spacing: .1rem;
@@ -179,28 +177,17 @@ blockquote {
 // Modals
 //----------------------------------------------------------------------------*/
 
-.modalclose > img {
-  width: 100px;
-  height: auto;
-}
+.readme-modal {
+  height: 75vh;
+  //width: 85vw;
+  overflow-y: scroll;
+  padding: 2rem;
 
-.modal-content {
-  text-align: left;
-  max-width: 40em;
-  display: inline-block;
-  padding: 2em;
-  color: #636b6f;
-  > {
-    a, p > a {
-      color: #4078c0;
-      text-decoration: none;
-    }
-    ul {
-      > li > a {
-        color: #4078c0;
-        text-decoration: none;
-      }
-      list-style: none;
-    }
+  .close {
+    font-weight: bold;
+    float: right;
+    color: #000000;
+    border: 0;
+    cursor: pointer;
   }
 }
