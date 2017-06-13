@@ -29,6 +29,7 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
+    disableHostCheck: true,
     inline: true
   },
   module: {

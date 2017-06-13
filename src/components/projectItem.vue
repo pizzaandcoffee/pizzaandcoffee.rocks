@@ -4,7 +4,7 @@
     div(v-if="infoShown")
       button(v-on:click="showinfo") Hide
       div(v-html="readme")
-    modal(v-bind:name="item.name" v-bind:width="vw" v-bind:height="vh")
+    modal(v-bind:name="item.name" v-bind:width="modalSize.width" v-bind:height="modalSize.height")
       .readme-modal
         span.close(v-on:click="hideinfo") X
         div.readme(v-html="readme")
@@ -13,13 +13,13 @@
 <script>
   import marked from 'marked'
   import Axios from 'axios'
-  import toPx from 'unit-to-px'
 
   export default {
     name: 'ProjectItem',
 
     props: [
-      'item'
+      'item',
+      'modalSize'
     ],
 
     created () {
@@ -30,16 +30,6 @@
       return {
         readme: null,
         infoShown: false
-      }
-    },
-
-    computed: {
-      vw () {
-        return (toPx('vw') * 60)
-      },
-
-      vh () {
-        return (toPx('vh') * 75)
       }
     },
 
