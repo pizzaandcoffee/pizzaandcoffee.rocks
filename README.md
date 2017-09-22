@@ -1,6 +1,13 @@
-# pizza-and-coffee-website
+# [Pizzaandcoffee.rocks](https://pizzaandcoffee.rocks/)
 
-> The website for pizza and coffee studios
+The source code of our website
+
+## Tech
+
+* VueJS
+* Pug
+* SASS
+* Webpack
 
 ## Build Setup
 
@@ -9,7 +16,7 @@
 npm install
 
 # dev build
-npm run dev
+npm run start
 
 # prod build
 npm run build
