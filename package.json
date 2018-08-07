@@ -15,7 +15,7 @@
     "granim": "1.0.6",
     "marked": "0.3.9",
     "unit-to-px": "^1.0.2",
-    "vue": "2.4.3",
+    "vue": "2.5.17",
     "vue-js-modal": "^1.1.2",
     "vue-router": "2.3.1",
     "vue-scrollto": "2.6.8"
